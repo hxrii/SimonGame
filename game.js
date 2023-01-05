@@ -18,8 +18,8 @@ let startOver = (e)=>{
 
 $(".btn").click(function() {
 
+
     var userChosenColour = $(this).attr("id");
-  
     userClickedPattern.push(userChosenColour); 
 
    
@@ -115,7 +115,7 @@ let animatePress = (currentColor)=>{
 
 // }
 
-$(document).keypress(function() {
+$(document).keydown(function() {
     if (!started) {
   
        $("#level-title").text("Level " + level);
@@ -123,6 +123,8 @@ $(document).keypress(function() {
       started = true;
     }
   });
+ 
+  
 
 
 
