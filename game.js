@@ -2,7 +2,7 @@ let buttonColors = ["red","blue","green","yellow"]
 let gamePattern = [];
 let userClickedPattern = [];
 let level = 0;
-
+let score = 0;
 var started = false;
 
 
@@ -41,6 +41,8 @@ $(".btn").click(function() {
 function checkAnswer(currentLevel) {
       if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
       console.log("success");
+      score+=10;
+      $("#Score").text("Score : "+score);
        if (userClickedPattern.length === gamePattern.length){
         setTimeout(function () {
           userClickedPattern=[]  
@@ -51,7 +53,7 @@ function checkAnswer(currentLevel) {
     else {
       console.log("wrong");
       animateGameOver();
-      $("#level-title").text("Game Over. Press Any Key to restart");
+      $("#level-title").text("Game Over. Press Any Key");
       let audio = new Audio("sounds/wrong.mp3");
       audio.play();
       audio.play();
@@ -115,7 +117,7 @@ let animatePress = (currentColor)=>{
 
 // }
 
-$(document).keydown(function() {
+$(document).keypress(function() {
     if (!started) {
   
        $("#level-title").text("Level " + level);
@@ -124,7 +126,14 @@ $(document).keydown(function() {
     }
   });
  
+  $(document).keydown(function() {
+    if (!started) {
   
+       $("#level-title").text("Level " + level);
+      nextSequence();
+      started = true;
+    }
+  });  
 
 
 

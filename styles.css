@@ -1,9 +1,16 @@
 body {
   text-align: center;
-  background-color: #011F3F;
+  background-color: rgb(50, 216, 183)
 }
 
 #level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  2%;
+  color: #FEF2BF;
+}
+
+#Score {
   font-family: 'Press Start 2P', cursive;
   font-size: 3rem;
   margin:  5%;
@@ -27,7 +34,8 @@ body {
 }
 
 .game-over {
-  background-color: red;
+    background: linear-gradient(to right, #200122, #6f0000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
   opacity: 0.8;
 }
 
