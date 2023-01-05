@@ -15,6 +15,7 @@ let startOver = (e)=>{
 
 
 
+
 $(".btn").click(function() {
 
     var userChosenColour = $(this).attr("id");
@@ -33,13 +34,16 @@ $(".btn").click(function() {
     console.log(gamePattern)
   
   });
-  
+
+
+
 
 function checkAnswer(currentLevel) {
       if (gamePattern[currentLevel] === userClickedPattern[currentLevel]) {
       console.log("success");
        if (userClickedPattern.length === gamePattern.length){
         setTimeout(function () {
+          userClickedPattern=[]  
           nextSequence();
         }, 1000);
       } }
@@ -75,15 +79,10 @@ let nextSequence = ()=>{
     gamePattern.push(buttonColors[num]);
     $("#" + buttonColors[num]).fadeIn(200).fadeOut(250).fadeIn(200);
 
+
     console.log(gamePattern);
     colorChosen= buttonColors[num]
-   
-   
     console.log("./sounds/"+buttonColors[num]+".mp3")
-
-    
-
-    
     let audio = new Audio("sounds/" + colorChosen + ".mp3");
     audio.play();
     
