@@ -1,33 +1,50 @@
 let buttonColors = ["red","blue","green","yellow"]
 let gamePattern = [];
-let userPattern = [];
+let userClickedPattern = [];
 
 let nextSequence = ()=>{
-    let num = Math.random()*4;
-    console.log(num)
-    return num;
+    let num = Math.floor(Math.random()*4);
+
+    gamePattern.push(buttonColors[num]);
+    $("#" + buttonColors[num]).fadeIn(200).fadeOut(250).fadeIn(200);
+
+    console.log(gamePattern);
+    colorChosen= buttonColors[num]
+   
+   
+    console.log("./sounds/"+buttonColors[num]+".mp3")
+
+    
+
+    
+    // let audio = new Audio("sounds/" + colorChosen + ".mp3");
+    // audio.play();
+    
 }
 
-//buttonColors[parseInt(nextSequence())] gives buttonColors[int] where int is the random number generated
 
-gamePattern.push(buttonColors[parseInt(nextSequence())]);
-$("#" + buttonColors[parseInt(nextSequence())]).fadeIn(100).fadeOut(100).fadeIn(100);
+let animatePress = (currentColor)=>{
+    $('#'+currentColor).addClass("pressed")
+    setTimeout((e)=>{
+        $("#"+currentColor).removeClass("pressed")
+    },100);
+} 
 
-console.log(gamePattern);
+$(".btn").click(function() {
 
-colorChosen= buttonColors[parseInt(nextSequence())]
-console.log("./sounds/"+buttonColors[parseInt(nextSequence())]+".mp3")
+    var userChosenColour = $(this).attr("id");
+  
+    userClickedPattern.push(userChosenColour); 
 
+   
+    let audio = new Audio("sounds/" + userChosenColour + ".mp3");
+    animatePress(userChosenColour);
+    audio.play();
+    
+    animatePress(userChosenColour);
+  
+  });
 
-/*  AUDIO
-let audio = new Audio("sounds/" + colorChosen + ".mp3");
-audio.play();
-*/
-
-
-$("button").on("click",(e)=>{
-    let userChosenColor = e.
-})
 
 
 
